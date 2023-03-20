@@ -1,0 +1,89 @@
+body {
+    margin: 0px;
+    padding: 0px;   
+}
+
+/*VARIABLES GLOBALES*/
+$v-width: 100%;
+$nav-font-size: 23px;
+$letra-nav: 23px;
+
+/* NESTING */
+body {
+    nav {
+        div {
+            div {
+                ul {
+                    li { /*Condicionales IF y ELSE*/
+                        @if ($letra-nav==23px){
+                            font-size:23px;
+                        }
+                            @else {
+                                font-size: 40px;
+                            }
+                        &:hover {
+
+                            $vfont-weight: bold; /*Variable local*/
+                            font-weight:$vfont-weight;
+                        }
+                    }
+
+                }
+            }
+        }
+    }
+}
+
+
+/*CICLO FOR*/
+@for $i from 1 through 5{
+    .col-#{$i}{
+        height: $i * 20%;
+    }
+}
+/*CICLO FOR EACH*/
+$color: Red,Blue,Grey, Brown,Yellow,Purple;
+
+@each $j in $color{
+    .#{$j}{
+        background-color: $j;
+    }
+}
+
+/* MAPAS */
+$estilos:(
+    color:blue,
+    centro: center,
+    tfuente:35px,
+    1rem:1rem
+);
+
+
+/* EXTEND */ 
+.card{
+    background: lightgrey;
+    border-radius: 4px;
+    padding: $nav-font-size;
+    @extend .avatar;
+}
+
+.avatar{
+    width:$v-width;
+    height: 100%;
+    
+}
+
+/* MIXIN */
+@mixin imagenes{ 
+    width: none;
+    display: none;
+    justify-content: none;
+    align-items: none;
+    border-radius: none;
+    grid-area: none;
+}
+
+@import "pages/inicio";
+@import "pages/nosotros";
+@import "pages/cart";
+
